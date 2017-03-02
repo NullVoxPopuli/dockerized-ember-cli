@@ -11,3 +11,5 @@ Includes:
  - watchman
  
  The internal app directory is `/web`, so keep that in mind for your docker-compose setups.
+ 
+ Once built, be sure to run `npm install` in the context of the container before running your ember dev-server. :-)
