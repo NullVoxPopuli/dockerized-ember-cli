@@ -5,6 +5,7 @@ RUN \
   apt-get install tar bzip2 && \
   npm install -g ember-cli@2.11.1 && \
   npm install -g bower@1.8.0 && \
+  echo '{ "allow_root": true }' > /root/.bowerrc && \
   npm install -g phantomjs-prebuilt@2.1.14 && \
   # install watchman
   # Note: See the README.md to find out how to increase the
@@ -17,6 +18,9 @@ RUN \
   ./configure && \
   make && \
   make install
+
+# Ensures that the installed executables are in the path
+ENV PATH "$PATH:/usr/local/lib/node_modules"
 
 # ember server on port 4200
 # livereload server on port 49152
