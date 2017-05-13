@@ -28,7 +28,8 @@ EXPOSE 4200 49152
 
 RUN mkdir /web
 WORKDIR /web
-ADD . /web
+# Adding should be done in the project Dockerfile
+# ADD . /web
 
 # Use user inherited from node image.
 # This allows files created in the docker environment to
