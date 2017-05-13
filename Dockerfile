@@ -1,9 +1,9 @@
-FROM node:6.9.5
+FROM node:7.9.0
 
 # Note: npm is v2.15.11
 RUN \
   apt-get install tar bzip2 && \
-  npm install -g ember-cli@2.11.1 && \
+  npm install -g ember-cli@2.13.1 && \
   npm install -g bower@1.8.0 && \
   echo '{ "allow_root": true }' > /root/.bowerrc && \
   npm install -g phantomjs-prebuilt@2.1.14 && \
