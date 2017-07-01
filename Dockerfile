@@ -3,10 +3,11 @@ FROM node:7.9.0
 # Note: npm is v2.15.11
 RUN \
   apt-get install tar bzip2 && \
-  npm install -g ember-cli@2.13.1 && \
+  npm install -g ember-cli@2.13.3 && \
   npm install -g bower@1.8.0 && \
   echo '{ "allow_root": true }' > /root/.bowerrc && \
   npm install -g phantomjs-prebuilt@2.1.14 && \
+  npm install -g yarn && \
   # install watchman
   # Note: See the README.md to find out how to increase the
   # fs.inotify.max_user_watches value so that watchman will
@@ -30,11 +31,6 @@ RUN mkdir /web
 WORKDIR /web
 # Adding should be done in the project Dockerfile
 # ADD . /web
-
-# Use user inherited from node image.
-# This allows files created in the docker environment to
-# be editable by the host machine user
-USER node
 
 # run ember server on container start
 CMD ["ember", "server"]
