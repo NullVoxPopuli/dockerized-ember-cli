@@ -7,7 +7,6 @@ RUN \
   npm install -g bower@1.8.0 && \
   echo '{ "allow_root": true }' > /root/.bowerrc && \
   npm install -g phantomjs-prebuilt@2.1.14 && \
-  npm install -g yarn && \
   # install watchman
   # Note: See the README.md to find out how to increase the
   # fs.inotify.max_user_watches value so that watchman will
