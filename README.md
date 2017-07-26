@@ -1,13 +1,10 @@
 # dockerized-ember-cli
 dockerized dev environment for ember-cli apps
 
-When running `ember generate` or other commands that create files in the container environment, they are not owned by root. (A problem I had with other ember-cli docker images)
-
 Includes:
  - ember
  - npm
  - bower
- - phantomjs
  - chrome
  - watchman
 
@@ -51,7 +48,6 @@ module.exports = {
     "Chrome"
   ],
   "launch_in_dev": [
-    "PhantomJS",
     "Chrome"
   ],
   "browser_args": {

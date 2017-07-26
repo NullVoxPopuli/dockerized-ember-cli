@@ -29,9 +29,6 @@ RUN  \
   # Allow root use
   && echo '{ "allow_root": true }' > /root/.bowerrc \
   \
-  # Install PhantomJS
-  && npm install -g phantomjs-prebuilt@2.1.14 \
-  \
   # Install watchman
   && git clone https://github.com/facebook/watchman.git \
   && cd watchman \
