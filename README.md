@@ -34,7 +34,7 @@ docker-compose run --rm dev ember server
 #!/bin/bash
 if [[ -n "$1" ]]; then
   echo "Running Command: $*"
-  docker-compose run --rm server $*
+  docker-compose run --rm dev $*
 else
   echo "Booting Environment..."
   # make extra sure that the images are built
