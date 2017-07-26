@@ -10,6 +10,12 @@ ENV PATH $PATH:/usr/local/lib/node_modules
 RUN  \
   # Create web directory
   mkdir /web \
+
+  # Install Google Chrome Stable version
+  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
+  && apt-get update \
+  && apt-get install -y google-chrome-stable \
   \
   # Install archivers
   && apt-get install tar bzip2 \
