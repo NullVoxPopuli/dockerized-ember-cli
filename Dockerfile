@@ -1,35 +1,51 @@
 FROM node:7.9.0
 
-# Note: npm is v2.15.11
-RUN \
-  apt-get install tar bzip2 && \
-  npm install -g ember-cli@2.13.3 && \
-  npm install -g bower@1.8.0 && \
-  echo '{ "allow_root": true }' > /root/.bowerrc && \
-  npm install -g phantomjs-prebuilt@2.1.14 && \
-  # install watchman
-  # Note: See the README.md to find out how to increase the
-  # fs.inotify.max_user_watches value so that watchman will
-  # work better with ember projects.
-  git clone https://github.com/facebook/watchman.git && \
-  cd watchman && \
-  git checkout v3.5.0 && \
-  ./autogen.sh && \
-  ./configure && \
-  make && \
-  make install
+MAINTAINER Preston Sego
+MAINTAINER Akram Mnif
 
-# Ensures that the installed executables are in the path
-ENV PATH "$PATH:/usr/local/lib/node_modules"
+USER root
 
-# ember server on port 4200
-# livereload server on port 49152
+ENV PATH $PATH:/usr/local/lib/node_modules
+
+RUN  \
+  # Create web directory
+  mkdir /web \
+
+  # Install Google Chrome Stable version
+  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
+  && apt-get update \
+  && apt-get install -y google-chrome-stable \
+  \
+  # Install archivers
+  && apt-get install tar bzip2 \
+  \
+  # Install Ember CLI
+  && npm install -g ember-cli@2.13.3 \
+  \
+  # Install Bower
+  && npm install -g bower@1.8.0 \
+  \
+  # Allow root use
+  && echo '{ "allow_root": true }' > /root/.bowerrc \
+  \
+  # Install PhantomJS
+  && npm install -g phantomjs-prebuilt@2.1.14 \
+  \
+  # Install watchman
+  && git clone https://github.com/facebook/watchman.git \
+  && cd watchman \
+  && git checkout v4.7.0  # the latest stable release \
+  && ./autogen.sh \
+  && ./configure \
+  && make \
+  && make install \
+  \
+  # Cleaning up after installation
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 EXPOSE 4200 49152
 
-RUN mkdir /web
 WORKDIR /web
-# Adding should be done in the project Dockerfile
-# ADD . /web
 
-# run ember server on container start
-CMD ["ember", "server"]
+CMD ['ember','server']
