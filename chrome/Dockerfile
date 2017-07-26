@@ -1,4 +1,4 @@
-FROM node:7.9.0
+FROM node:6
 
 MAINTAINER Preston Sego
 MAINTAINER Akram Mnif
@@ -21,12 +21,12 @@ RUN  \
   && apt-get install tar bzip2 \
   \
   # Install Ember CLI
-  && npm install -g ember-cli@2.13.3 \
+  && npm install -g ember-cli@2.14.1 \
   \
   # Install Bower
   && npm install -g bower@1.8.0 \
   \
-  # Allow root use
+  # Allow bower to function under the root user
   && echo '{ "allow_root": true }' > /root/.bowerrc \
   \
   # Install PhantomJS

@@ -65,7 +65,7 @@ be sure to `chmod +x run`
 
 ```Dockerfile
 # Dockerfile
-FROM nullvoxpopuli/ember-cli:2.13.3
+FROM nullvoxpopuli/ember-cli:2.14.1
 USER root
 
 ADD bower.json   /web/bower.json
