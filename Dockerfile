@@ -14,11 +14,9 @@ RUN  \
   # Install archivers
   && apt-get install tar bzip2 \
   \
-  # Install Ember CLI
   && npm install -g ember-cli@2.14.1 \
-  \
-  # Install Bower
   && npm install -g bower@1.8.0 \
+  && npm install -g yarn \
   \
   # Allow bower to function under the root user
   && echo '{ "allow_root": true }' > /root/.bowerrc \
