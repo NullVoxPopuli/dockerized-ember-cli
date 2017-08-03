@@ -116,5 +116,5 @@ services:
     env_file:
       - .env
     environment:
-      - STRIPE_CLIENT_ID=ca_4oEqCCUzDfLTBqXsFbXyklhVUP8XdOfO
+      - STRIPE_CLIENT_ID=thevalue
 ```
