@@ -6,7 +6,7 @@ Includes:
  - ember
  - npm
  - bower
- - chrome
+ - phantomjs
  - watchman
 
  The internal app directory is `/web`, so keep that in mind for your docker-compose setups.
