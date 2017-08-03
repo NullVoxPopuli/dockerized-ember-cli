@@ -40,4 +40,4 @@ EXPOSE 4200 49152
 
 WORKDIR /web
 
-CMD ['ember','server']
+CMD ['ember','server','--watcher, 'polling']
