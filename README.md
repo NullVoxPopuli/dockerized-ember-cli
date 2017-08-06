@@ -120,4 +120,4 @@ services:
 ```
 ### Windows users
 
-You will need to add '--watcher polling' in command as a parameter. it is likely that the changes of file on host machine will not correctly processed inside the docker. Changing a watchman from tracking events to polling file updates will solve the issue with live reloads.
+You will need to add `--watcher polling` in command as a parameter. it is likely that the changes of file on host machine will not correctly processed inside the docker. Changing a watchman from tracking events to polling file updates will solve the issue with live reloads.
